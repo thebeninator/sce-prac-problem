@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/sce-practice-problem/static/css/main.7b525e10.css",
-    "main.js": "/sce-practice-problem/static/js/main.a5d3cee7.js",
-    "index.html": "/sce-practice-problem/index.html",
-    "main.7b525e10.css.map": "/sce-practice-problem/static/css/main.7b525e10.css.map",
-    "main.a5d3cee7.js.map": "/sce-practice-problem/static/js/main.a5d3cee7.js.map"
+    "main.css": "/sce-prac-problem/static/css/main.7b525e10.css",
+    "main.js": "/sce-prac-problem/static/js/main.a5d3cee7.js",
+    "index.html": "/sce-prac-problem/index.html",
+    "main.7b525e10.css.map": "/sce-prac-problem/static/css/main.7b525e10.css.map",
+    "main.a5d3cee7.js.map": "/sce-prac-problem/static/js/main.a5d3cee7.js.map"
   },
   "entrypoints": [
     "static/css/main.7b525e10.css",
