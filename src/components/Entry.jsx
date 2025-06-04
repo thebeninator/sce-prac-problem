@@ -1,3 +1,4 @@
+/*
 const Entry = ({ entryData }) => {
     if (!entryData) {
         throw new Error("Entry component was not given any data");
@@ -14,3 +15,4 @@ const Entry = ({ entryData }) => {
 }
 
 export default Entry; 
+*/

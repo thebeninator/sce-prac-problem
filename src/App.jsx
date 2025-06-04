@@ -1,5 +1,3 @@
-import NewEntryForm from "./components/NewEntryForm";
-import EntryFeed from "./components/EntryFeed";
 import {useState, useEffect} from "react";
 import key from "./ApiKey";
 
@@ -7,7 +5,27 @@ const App = () => {
     const [entries, setEntries] = useState([]);
     const [feedActive, setFeedActive] = useState(false);
     const [address, setAddress] = useState("");
+
+    const [symbol, setSymbol] = useState("");
+    const [savedSymbol, setSavedSymbol] = useState("");
+    
+    const [minutes, setMinutes] = useState(0);
+    const [seconds, setSeconds] = useState(0); 
     const [timeMS, setTimeMS] = useState(0);
+
+    const onSubmit = (e) =>  {
+        e.preventDefault();
+
+        if (symbol !== "" && (minutes + seconds > 0)) {
+            startFeed(symbol, minutes, seconds, savedSymbol !== symbol);
+            console.log("Feed started");
+        } else {
+            stopFeed(symbol === "");
+            console.log("Feed stopped");
+        }
+
+        setSavedSymbol(symbol);
+    }
 
     const fetchStockData = (address) => {
         fetch(address, {
@@ -61,9 +79,63 @@ const App = () => {
         return () => clearInterval(interval); 
     }, [feedActive, timeMS, address]);
     
-    return (<div className="container">        
-        <NewEntryForm doStartFeed={ startFeed } doStopFeed={ stopFeed }/> 
-        <EntryFeed entries={ entries }/>
+    return (<div>        
+        <form onSubmit = { onSubmit }>           
+            <div>
+                <label>Symbol</label>
+                <input type="text" 
+                    onChange = { (e) => {
+                        setSymbol(e.target.value.toUpperCase())
+                    }}
+                />
+            </div>
+
+            <div>
+                <label>Minutes</label>
+                <input type="number" 
+                    onChange = { (e) => setMinutes(e.target.value) }   
+                    defaultValue={0}
+                />
+            </div>
+
+            <div>
+                <label>Seconds</label>
+                <input type="number" 
+                    onChange = { (e) => setSeconds(e.target.value) } 
+                    defaultValue={0}
+                />
+            </div>
+
+            <div>
+                <input type="submit" />
+            </div>
+        </form> 
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Open Price</th>
+                    <th>High Price</th>
+                    <th>Low Price</th>
+                    <th>Current Price</th>
+                    <th>Previous Close Price</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+
+            <tbody>{
+                entries.map( (entry, index) => ( 
+                    <tr key={index}>
+                        <td>${ entry.o }</td>
+                        <td>${ entry.h }</td>
+                        <td>${ entry.l }</td>
+                        <td>${ entry.c }</td>
+                        <td>${ entry.pc }</td>
+                        <td>{ entry.t }</td>
+                    </tr> )
+                )
+            }</tbody>
+        </table>
     </div>);
 }
 

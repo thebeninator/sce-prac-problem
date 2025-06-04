@@ -1,3 +1,4 @@
+/*
 import Entry from "./Entry";
 
 const EntryFeed = ({ entries }) => {
@@ -22,3 +23,4 @@ const EntryFeed = ({ entries }) => {
 }
 
 export default EntryFeed;
+*/

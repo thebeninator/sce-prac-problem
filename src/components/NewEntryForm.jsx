@@ -1,3 +1,4 @@
+/*
 import { useState } from "react"; 
 
 const NewEntryForm = ({ doStartFeed, doStopFeed }) => {
@@ -61,3 +62,4 @@ const NewEntryForm = ({ doStartFeed, doStopFeed }) => {
 }
 
 export default NewEntryForm; 
+*/
